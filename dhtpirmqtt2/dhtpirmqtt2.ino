@@ -2,7 +2,7 @@
 // https://github.com/adafruit/DHT-sensor-library/blob/master/examples/DHTtester/DHTtester.ino
 // https://gist.github.com/igrr/7f7e7973366fc01d6393
 // https://github.com/iot-playground/Arduino/blob/master/ESP8266ArduinoIDE/DS18B20_temperature_sensor/DS18B20_temperature_sensor.ino
-// Must use Adafruit DHT library <=1.3.0 or you will get errors
+
 // esp8266 + dht22 + mqtt
 
 #include "DHT.h"
