@@ -36,9 +36,9 @@ long previous811Time = 0;
 #define PIRPIN 13
 #define DHTPIN 10     // what pin we're connected to
 #define DHTTYPE DHT22   // DHT 22  (AM2302)
-#define DHT_REPORT_INTERVAL 30000 // in milliseconds
+#define DHT_REPORT_INTERVAL 20000 // in milliseconds
 #define PIR_REPORT_INTERVAL 1000
-#define MOTION_DETECT_INTERVAL 60000 // I don't want a message every second..every 6 min report Motion
+#define MOTION_DETECT_INTERVAL 60000 // I don't want a message every second..every 1 min report Motion
 #define CCS_REPORT_INTERVAL 20000 // in milliseconds
 #define IDIV(n,d)                ((n)>0 ? ((n)+(d)/2)/(d) : ((n)-(d)/2)/(d))
 bool PIRON = true; // MQTT can send OFF or ON payload to control motion sensor
@@ -238,7 +238,11 @@ void loop() {
           }
         }
         else {
-          // No motion
+          //  No motion
+          //  String Mpayload = "{\"Motion\":";
+          //  Mpayload += 0;
+          //  Mpayload += "}";
+          //  sendMQTT(MQTTTopic + "/PIR", Mpayload);
         }
       }
 
