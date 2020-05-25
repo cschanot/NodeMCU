@@ -111,7 +111,7 @@ void setup() {
   if (client.connect((char*) clientName.c_str())) {
     Serial.println("Connected to MQTT broker");
 
-    if (client.publish(hellotopic, "Hello from NodeMCU")) {
+    if (client.publish(hellotopic, sendStats().c_str())) {
       Serial.println("Publish ok");
     }
     else {
@@ -376,4 +376,29 @@ void update_progress(int cur, int total) {
 
 void update_error(int err) {
   Serial.printf("CALLBACK:  HTTP update fatal error code %d\n", err);
+}
+
+String sendStats() {
+  int ourDBM;
+ 
+  if (WiFi.status() != WL_CONNECTED)
+    abort();
+  
+  int dBm = WiFi.RSSI();
+  if (dBm <= -100)
+    ourDBM = 0;
+  if (dBm >= -50)
+    ourDBM = 100;
+  ourDBM =  2 * (dBm + 100);
+  
+   String payload = "{\"Signal\":";
+         payload += ourDBM;
+         payload += ",\"Uptime\":";
+         payload += millis();
+         payload += ",\"Hostname\":";
+         payload += hostname;
+         payload += ",\"IP\":";
+         payload += WiFi.localIP().toString().c_str();
+         payload += "}";
+  return payload;       
 }
