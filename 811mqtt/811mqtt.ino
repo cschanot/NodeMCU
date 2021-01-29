@@ -11,10 +11,10 @@
 #include <ESP8266WiFi.h>
 
 int  _soldercorrection;
-const char* ssid = "120Mesh";
-const char* password = "1801ca1326";
+const char* ssid = "WIFISSID";
+const char* password = "WIFIPASSWORD";
 char* server = "192.168.1.20";
-char* hellotopic = "HarperNode";
+char* hellotopic = "RoomName";
 long previousDHTTime = 0;
 long previous811Time = 0;
 #define DHTPIN 13     // what pin we're connected to
